@@ -2,11 +2,12 @@ public abstract class Pet {
     protected String name;
     protected String color;
     protected String lifeStatus;
-
-    public Pet (String name, String color, String lifeStatus){
+    protected int satiety;
+    public Pet (String name, String color, String lifeStatus,int satiety){
         this.name=name;
         this.color=color;
         this.lifeStatus=lifeStatus;
+        this.satiety=satiety;
     }
 
     public abstract void run(int z);
@@ -14,8 +15,8 @@ public abstract class Pet {
     public abstract void jump(float z);
     public abstract void stop();
 
-    @Override
-    public String toString(){
-        return "Pet{"+ "name='"+name+'\''+'}';
-    }
+    public abstract int getSatiety();
+    public abstract void setSatiety(String lifeStatus);
+
+    public abstract String satietyMass();
 }

@@ -4,8 +4,8 @@ public class Cat extends Pet {
     protected float jump;
     protected int swim;
 
-    public Cat(String name, String color, String lifeStatus,int run,float jump,int swim){
-        super(name,color,lifeStatus);
+    public Cat(String name, String color, String lifeStatus,int run,float jump,int swim,int satiety){
+        super(name,color,lifeStatus,satiety);
         this.run=run;
         this.jump=jump;
         this.swim=swim;
@@ -45,6 +45,17 @@ public class Cat extends Pet {
     @Override
     public String toString(){
         String jump1 = String.format("%.3f",jump);
-        return "Cat{"+ "Имя "+name+" цвет "+color+"  "+lifeStatus+" бег "+run+"м прыжок "+jump1+"м плавание"+"нет"+'\''+'}';
+        return "Cat{"+ "Имя "+name+" цвет "+color+"  "+lifeStatus+" бег "+run+"м прыжок "+jump1+"м плавание "+swim+"м потребление пищи "+satiety+" ед."+'\''+'}';
+    }
+    public void setSatiety(String status){
+        lifeStatus=status;
+    }
+    @Override
+    public String satietyMass(){
+        return " "+name+" "+satiety+'\n';
+    }
+    @Override
+    public int getSatiety(){
+        return satiety;
     }
 }
