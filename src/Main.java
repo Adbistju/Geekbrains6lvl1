@@ -7,7 +7,7 @@ public class Main {
 
     protected static Pet[] petListnew;
 
-    protected static String[] petName={"Вася","Коля","Лена","Аня","Даша","Маша","Игорь","Витя","Митя"};
+    protected static String[] petName={"Вася","Коля","Лена","Аня","Даша","Маша","Игорь","Витя","Митяй"};
     protected static String[] petColor={"Крассный","Синий","Зеленый","Желтый"};
     protected static int massEatPalates;
     protected static String[] lifeStatus ={"сытый", "голодный"};
