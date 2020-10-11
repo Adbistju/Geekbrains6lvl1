@@ -1,26 +1,27 @@
 import java.util.Random;
 import java.util.Scanner;
 
-public class Main {
+public class Main{
     public static Random random = new Random();
     public static Scanner scanner=new Scanner(System.in);
 
     protected static Pet[] petListnew;
 
+    Plate pl1=new Plate(0);
     protected static String[] petName={"Вася","Коля","Лена","Аня","Даша","Маша","Игорь","Витя","Митяй"};
     protected static String[] petColor={"Крассный","Синий","Зеленый","Желтый"};
-    protected static int massEatPalates;
     protected static String[] lifeStatus ={"сытый", "голодный"};
-//    protected static String[] let={"river","mountain","plain"};
 
     public static void main (String [] args){
+        Plate pl1=new Plate(0);
         int h=0;
         System.out.println("Какое колличество животных позвать?");
         h=scanner.nextInt();
-        petListnew=new Pet[h];
-        spavnPet();
+        petListnew=new Pet[h];//создайть экземпляр класса и вызовите нестатический метод
+        Main spavnPet = new Main();
+        spavnPet.spavnPet();
     }
-    public static void spavnPet(){
+    public void spavnPet(){
         int x,y;
         int b=0;
         for (int i = 0; i < petListnew.length; i++) {
@@ -65,7 +66,7 @@ public class Main {
         }
         return 0;
     }
-    protected static void sayActPet(Scanner scanner){
+    protected void sayActPet(Scanner scanner){
         int x,y,z;
         float f;
         while (true) {
@@ -158,11 +159,13 @@ public class Main {
         }
         return true;
     }
-    protected static void fillThePlates(){
+    protected  void fillThePlates(){
+        int s;
         for (int i = 0; i < petListnew.length; i++) {
-            if (massEatPalates>0){
-                System.out.println("Питомец "+petListnew[i].satietyMass()+"съел. Осталось в миске:"+massEatPalates);
-                massEatPalates=massEatPalates-petListnew[i].getSatiety();
+            if (pl1.getVolume()>0&&(pl1.getVolume()-petListnew[i].getSatiety())>0){
+                s=pl1.getVolume()-petListnew[i].getSatiety();
+                pl1.setVolume(s);
+                System.out.println("Питомец "+petListnew[i].satietyMass()+"съел. Осталось в миске:"+pl1.getVolume());
                 petListnew[i].setSatiety(lifeStatus[0]);
             }else{
                 System.out.println("В миске мало еды");
@@ -170,10 +173,10 @@ public class Main {
             }
         }
     }
-    protected static void refillingTheBowl(Scanner scanner){
+    protected void refillingTheBowl(Scanner scanner){
         int x;
         System.out.println("Сколько положить еды в миску?");
         x = scanner.nextInt();
-        massEatPalates+=x;
+        pl1.setVolume(x);
     }
 }
